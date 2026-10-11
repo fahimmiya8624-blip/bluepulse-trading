@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d18">
+<meta name="description" content="A free educational trading dashboard with an economic calendar, market charts, and clearly labeled sample signals.">
+<title>BluePulse Trading — Market Dashboard</title>
+<style>
+:root{--bg:#070b14;--panel:#0e1626;--panel2:#111d31;--line:#20314d;--text:#eaf2ff;--muted:#91a5c4;--blue:#3b82f6;--cyan:#22d3ee;--green:#34d399;--red:#fb7185;--amber:#fbbf24}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 20% 0%,#102044 0,transparent 40%),var(--bg);color:var(--text);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+a{color:var(--cyan)}.wrap{max-width:1240px;margin:auto;padding:22px}.top{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:22px}.brand{display:flex;align-items:center;gap:12px}.logo{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,var(--blue),var(--cyan));color:#04101e;font-weight:900;font-size:21px;box-shadow:0 8px 30px #1d4ed855}.brand h1{font-size:20px;margin:0;letter-spacing:.3px}.brand p{margin:2px 0 0;color:var(--muted);font-size:12px}.topright{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.pill{border:1px solid var(--line);background:#0c1423;padding:8px 12px;border-radius:999px;color:var(--muted);font-size:12px}.live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:7px}.notice{padding:12px 15px;border:1px solid #654f1e;background:#241d0c;color:#f8d986;border-radius:12px;font-size:13px;margin-bottom:20px}.hero{display:grid;grid-template-columns:1.4fr .8fr;gap:16px;margin-bottom:16px}.hero-card,.card,.stat{background:linear-gradient(145deg,#101a2c,#0b1220);border:1px solid var(--line);border-radius:18px;box-shadow:0 10px 30px #0002}.hero-card{padding:24px;min-height:210px;position:relative;overflow:hidden}.hero-card:after{content:"";position:absolute;width:240px;height:240px;border-radius:50%;right:-80px;top:-100px;background:#2563eb20;filter:blur(5px)}.eyebrow{color:var(--cyan);font-weight:700;font-size:11px;letter-spacing:1.8px;text-transform:uppercase}.hero h2{font-size:clamp(25px,4vw,38px);line-height:1.12;margin:12px 0}.hero p{color:var(--muted);max-width:560px;margin:0}.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.btn{border:0;border-radius:10px;padding:10px 14px;background:linear-gradient(135deg,var(--blue),#2563eb);color:white;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block}.btn.secondary{background:#14233b;border:1px solid var(--line);color:var(--text)}.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.stat{padding:18px}.stat .label{color:var(--muted);font-size:12px}.stat strong{display:block;font-size:22px;margin-top:8px}.stat small{color:var(--muted)}.up{color:var(--green)}.down{color:var(--red)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}.card{padding:18px;min-width:0}.cardhead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}.card h3{font-size:16px;margin:0}.sub{font-size:12px;color:var(--muted);margin-top:4px}.select{background:#0a1322;color:var(--text);border:1px solid var(--line);padding:8px;border-radius:9px}.chart-frame{height:390px;overflow:hidden;border-radius:12px;background:#0b1220}.chart-frame iframe{width:100%;height:100%;border:0}.calendar-frame{height:470px;overflow:hidden;border-radius:12px;background:#0b1220}.calendar-frame iframe{width:100%;height:100%;border:0}.signal-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.signal-table{width:100%;border-collapse:collapse;font-size:13px}.signal-table th,.signal-table td{text-align:left;padding:12px 9px;border-bottom:1px solid var(--line)}.signal-table th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.8px}.tag{display:inline-block;padding:4px 8px;border-radius:7px;font-weight:800;font-size:11px}.buy{background:#063b32;color:#6ee7b7}.sell{background:#4a1724;color:#fda4af}.wait{background:#3b2d0a;color:#fcd34d}.sample{font-size:10px;color:#fcd34d;border:1px solid #6b531b;padding:3px 7px;border-radius:999px}.signal-note{font-size:12px;color:var(--muted);margin-top:12px}.signal-form{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:8px;margin:14px 0}.signal-form input,.signal-form select{width:100%;background:#091221;color:var(--text);border:1px solid var(--line);padding:10px;border-radius:9px;min-width:0}.empty{padding:22px;text-align:center;color:var(--muted)}footer{color:var(--muted);font-size:12px;text-align:center;padding:24px 0 10px}footer a{margin:0 5px}.mobile-scroll{overflow-x:auto}.section-title{display:flex;align-items:center;gap:10px;margin:24px 0 12px}.section-title span{color:var(--cyan);font-size:12px;font-weight:800;letter-spacing:1.5px}.section-title h2{font-size:18px;margin:0}@media(max-width:800px){.hero,.grid{grid-template-columns:1fr}.hero-card{min-height:0}.chart-frame{height:350px}.calendar-frame{height:500px}.wrap{padding:14px}.signal-form{grid-template-columns:1fr 1fr}.stats{gap:8px}.stat{padding:14px}.stat strong{font-size:19px}}@media(max-width:480px){.signal-form{grid-template-columns:1fr}.signal-table{min-width:550px}.brand h1{font-size:18px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <div class="brand"><div class="logo">BP</div><div><h1>BluePulse Trading</h1><p>MARKET WATCH · EDUCATIONAL DASHBOARD</p></div></div>
+  <div class="topright"><span class="pill"><span class="live-dot"></span>Widgets load from third-party providers</span><span class="pill" id="clock">Local time: --:--:--</span></div>
+</header>
+<div class="notice"><strong>Risk notice:</strong> This is an educational dashboard. Signals shown below are examples or user-entered notes, not verified live trading signals. Nothing here guarantees profit. Check data, spreads, and event times independently before making any decision.</div>
+
+<section class="hero">
+  <div class="hero-card"><div class="eyebrow">Market overview</div><h2>Read the market.<br><span style="color:var(--cyan)">Manage the risk.</span></h2><p>Track selected currency pairs and Gold, review major economic events, and keep your own trading notes in one dark, mobile-friendly dashboard.</p><div class="hero-actions"><a class="btn" href="#charts">Open market charts ↓</a><a class="btn secondary" href="#calendar">Economic calendar</a></div></div>
+  <div class="stats">
+    <div class="stat"><div class="label">WATCHLIST</div><strong>EUR/USD</strong><small>Major currency pair</small></div>
+    <div class="stat"><div class="label">METAL</div><strong>XAU/USD</strong><small>Gold vs US Dollar</small></div>
+    <div class="stat"><div class="label">KEY EVENTS</div><strong>CPI · NFP</strong><small>Check calendar for release times</small></div>
+    <div class="stat"><div class="label">SIGNAL STATUS</div><strong style="color:var(--amber)">Practice</strong><small>Sample / manual notes only</small></div>
+  </div>
+</section>
+
+<div class="section-title" id="charts"><span>01</span><h2>Currency & Gold Charts</h2></div>
+<section class="grid">
+  <article class="card"><div class="cardhead"><div><h3>EUR/USD</h3><div class="sub">Interactive chart supplied by TradingView</div></div><span class="pill">Forex</span></div><div class="chart-frame"><iframe title="EUR USD chart" loading="lazy" src="https://s.tradingview.com/widgetembed/?frameElementId=tv_eurusd&symbol=FX%3AEURUSD&interval=60&hidesidetoolbar=1&symboledit=1&saveimage=0&toolbarbg=%230e1626&theme=dark&style=1&timezone=Etc%2FUTC&withdateranges=1&hideideas=1& studies=RSI%40tv-basicstudies" allowtransparency="true" allowfullscreen></iframe></div></article>
+  <article class="card"><div class="cardhead"><div><h3>Gold — XAU/USD</h3><div class="sub">Gold price chart · verify symbol availability</div></div><span class="pill">Metal</span></div><div class="chart-frame"><iframe title="Gold chart" loading="lazy" src="https://s.tradingview.com/widgetembed/?frameElementId=tv_gold&symbol=OANDA%3AXAUUSD&interval=60&hidesidetoolbar=1&symboledit=1&saveimage=0&toolbarbg=%230e1626&theme=dark&style=1&timezone=Etc%2FUTC&withdateranges=1&hideideas=1" allowtransparency="true" allowfullscreen></iframe></div></article>
+</section>
+
+<div class="section-title" id="calendar"><span>02</span><h2>Economic Calendar</h2></div>
+<section class="card" style="margin-bottom:16px"><div class="cardhead"><div><h3>Upcoming economic events</h3><div class="sub">Use the embedded calendar to review impact, forecast, previous and actual values when available.</div></div><span class="pill">CPI · NFP · FOMC · GDP</span></div><div class="calendar-frame"><iframe title="Economic calendar" loading="lazy" src="https://s.tradingview.com/embed-widget/events/?locale=en&importanceFilter=-1%2C0%2C1&currencyFilter=USD%2CEUR%2CGBP%2CJPY%2CAUD%2DCAD%2CCHF%2CNZD&colorTheme=dark&isTransparent=true" allowtransparency="true"></iframe></div><p class="signal-note">If the calendar does not load, open <a href="https://www.tradingview.com/economic-calendar/" target="_blank" rel="noopener noreferrer">TradingView Economic Calendar</a> directly. Event times may be displayed in the provider's selected time zone; check it before trading.</p></section>
+
+<div class="section-title" id="signals"><span>03</span><h2>BUY / SELL Signal Journal</h2></div>
+<section class="card" style="margin-bottom:16px">
+  <div class="cardhead"><div><h3>Your signal notes</h3><div class="sub">Example rows are not live recommendations. Add your own analysis notes below.</div></div><span class="sample">DEMO / MANUAL</span></div>
+  <div class="signal-form">
+    <select id="pair" aria-label="Trading pair"><option>EUR/USD</option><option>GBP/USD</option><option>USD/JPY</option><option>XAU/USD (Gold)</option><option>BTC/USD</option></select>
+    <select id="direction" aria-label="Signal direction"><option value="BUY">BUY</option><option value="SELL">SELL</option><option value="WAIT">WAIT</option></select>
+    <input id="reason" maxlength="100" placeholder="Reason / setup (e.g. trend retest)" aria-label="Reason for signal">
+    <button class="btn" id="addSignal" type="button">Add note</button>
+  </div>
+  <div class="mobile-scroll"><table class="signal-table"><thead><tr><th>Time</th><th>Pair</th><th>Direction</th><th>Reason / note</th><th>Type</th></tr></thead><tbody id="signalRows"></tbody></table></div>
+  <p class="signal-note">Notes are stored only in this browser using local storage. They are not sent to a server and will not automatically appear on other devices. Do not enter passwords or private financial details.</p>
+</section>
+
+<footer>BluePulse Trading · Free educational template · Not financial advice<br>Charts and calendar are provided by third parties and may be unavailable or change their terms.<br><a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer">TradingView</a> · <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a></footer>
+</div>
+<script>
+(function(){
+  const clock = document.getElementById('clock');
+  function updateClock(){ clock.textContent = 'Local time: ' + new Date().toLocaleTimeString(); }
+  updateClock(); setInterval(updateClock,1000);
+
+  const key='bluepulse-signal-notes-v1';
+  const rows=document.getElementById('signalRows');
+  const initial=[
+    {time:new Date().toLocaleString(),pair:'EUR/USD',direction:'WAIT',reason:'Example only — wait for confirmation',type:'SAMPLE'},
+    {time:new Date().toLocaleString(),pair:'XAU/USD (Gold)',direction:'WAIT',reason:'Example only — check news volatility',type:'SAMPLE'}
+  ];
+  function load(){
+    try{const saved=JSON.parse(localStorage.getItem(key));return Array.isArray(saved)?saved:initial;}
+    catch(e){return initial;}
+  }
+  let notes=load();
+  function render(){
+    rows.innerHTML='';
+    if(!notes.length){rows.innerHTML='<tr><td colspan="5" class="empty">No notes yet. Add your first manual note above.</td></tr>';return;}
+    notes.slice().reverse().forEach(n=>{
+      const tr=document.createElement('tr');
+      const values=[n.time,n.pair,n.direction,n.reason,n.type];
+      values.forEach((v,i)=>{const td=document.createElement('td');td.textContent=v;
+        if(i===2){const span=document.createElement('span');span.className='tag '+(v==='BUY'?'buy':v==='SELL'?'sell':'wait');span.textContent=v;td.textContent='';td.appendChild(span);}
+        if(i===4){const span=document.createElement('span');span.className='sample';span.textContent=v;td.textContent='';td.appendChild(span);}
+        tr.appendChild(td);
+      });
+      rows.appendChild(tr);
+    });
+  }
+  document.getElementById('addSignal').addEventListener('click',function(){
+    const pair=document.getElementById('pair').value;
+    const direction=document.getElementById('direction').value;
+    const reason=document.getElementById('reason').value.trim();
+    if(!reason){alert('Please enter a short reason or setup note first.');return;}
+    notes.push({time:new Date().toLocaleString(),pair,direction,reason,type:'MANUAL'});
+    notes=notes.slice(-50);
+    try{localStorage.setItem(key,JSON.stringify(notes));}catch(e){}
+    document.getElementById('reason').value='';
+    render();
+  });
+  render();
+})();
+</script>
+</body>
+</html>
